@@ -3,6 +3,7 @@ package com.example.braillekeyboard;
 import android.app.Activity;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Vibrator;
 import android.util.Log;
 import android.view.Menu;
 import android.view.View;
@@ -16,7 +17,7 @@ public class MainActivity extends Activity {
 	private EditText editText;
 	private int viewHeight, viewWidth;
 	private Button[] btn = new Button[6];
-	
+	private Vibrator vibrator;
 	TouchView touchView;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +25,7 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		
 		touchView = (TouchView)this.findViewById(R.id.touchViewID);
+		
 		
 		btn[0] = (Button)this.findViewById(R.id.btn0);
 		btn[1] = (Button)this.findViewById(R.id.btn1);
@@ -34,6 +36,9 @@ public class MainActivity extends Activity {
 		
 		//touchView.setButton(btn);//view에 button 넘겨주기
 		
+		vibrator = (Vibrator)getSystemService(Context.VIBRATOR_SERVICE);
+		
+		touchView.setVibrator(vibrator);
 		
 		editText = (EditText)this.findViewById(R.id.editText);
 		editText.setOnClickListener(new OnClickListener() {

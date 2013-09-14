@@ -3,6 +3,7 @@ package com.example.braillekeyboard;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Rect;
+import android.os.Vibrator;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -20,7 +21,12 @@ public class TouchView extends View {
 	private int arr[] = new int[6];
 	private boolean touched[] = new boolean[6];
 	private int height, width;
-
+	private boolean m_isVibrator;
+	private Vibrator vibrator;
+	
+	public void setVibrator(Vibrator vib){
+		this.vibrator = vib;
+	}
 	public void setHeight(int height) {
 		this.height = height;
 	}
@@ -94,11 +100,13 @@ public class TouchView extends View {
 			if ((downPositionX - upPositionX >= this.width / 2)
 					&& (downPositionY - downPositionY < 20 || downPositionY
 							- downPositionY > -20)) {
+				this.vibrator.vibrate(100);
 				Log.d("aa", "aa");
 				break;
 			} else if ((upPositionX - downPositionX >= this.width / 2)
 					&& (downPositionY - downPositionY < 20 || downPositionY
 							- downPositionY > -20)) {
+				this.vibrator.vibrate(100);
 				Log.d("dd", "dd");
 				break;
 			} else if (Math.abs(upPositionX - downPositionX) < 5
@@ -110,6 +118,7 @@ public class TouchView extends View {
 							((int) paramMotionEvent.getY() + editTextHeight))) {
 						if (touched[i] == false) {// on
 							btn[i].setBackgroundResource(R.drawable.ic_launcher);
+							this.vibrator.vibrate(80);
 							touched[i] = true;
 						} else {// off
 							btn[i].setBackgroundResource(R.drawable.logo02);
@@ -131,5 +140,6 @@ public class TouchView extends View {
 
 		return arr;
 	}
+	
 
 }
