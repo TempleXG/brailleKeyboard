@@ -25,7 +25,15 @@ public final class R {
         public static final int logo02=0x7f020001;
     }
     public static final class id {
-        public static final int action_settings=0x7f080000;
+        public static final int action_settings=0x7f080008;
+        public static final int btn0=0x7f080001;
+        public static final int btn1=0x7f080002;
+        public static final int btn2=0x7f080003;
+        public static final int btn3=0x7f080004;
+        public static final int btn4=0x7f080005;
+        public static final int btn5=0x7f080006;
+        public static final int editText=0x7f080000;
+        public static final int touchViewID=0x7f080007;
     }
     public static final class layout {
         public static final int activity_main=0x7f030000;
