@@ -23,10 +23,13 @@ public class TouchView extends View {
 	private int height, width;
 	private boolean m_isVibrator;
 	private Vibrator vibrator;
+	private String result;
 	
-	public void setVibrator(Vibrator vib){
+	
+	public void setVibrator(Vibrator vib) {
 		this.vibrator = vib;
 	}
+
 	public void setHeight(int height) {
 		this.height = height;
 	}
@@ -97,31 +100,34 @@ public class TouchView extends View {
 			upPositionX = (int) paramMotionEvent.getX();
 			upPositionY = (int) paramMotionEvent.getY();
 
-			if ((downPositionX - upPositionX >= this.width / 2)
+			if ((downPositionX - upPositionX >= this.width / 2)					//왼쪽으로 움직이기 backspace
 					&& (downPositionY - downPositionY < 20 || downPositionY
-							- downPositionY > -20)) {
+							- downPositionY > -20)) {							
 				this.vibrator.vibrate(100);
-				Log.d("aa", "aa");
+
+				
+				
 				break;
-			} else if ((upPositionX - downPositionX >= this.width / 2)
+			} else if ((upPositionX - downPositionX >= this.width / 2)			//오른쪽으로 움직이기 입력하기
 					&& (downPositionY - downPositionY < 20 || downPositionY
 							- downPositionY > -20)) {
 				this.vibrator.vibrate(100);
-				Log.d("dd", "dd");
+				
+					result = setString();
+					Log.d("result",""+result);
 				break;
 			} else if (Math.abs(upPositionX - downPositionX) < 5
-					&& Math.abs(downPositionY - downPositionY) < 5) {
-				
+					&& Math.abs(downPositionY - downPositionY) < 5) {// no break
 
 				for (int i = 0; i < rect.length; i++) {
 					if (rect[i].contains((int) paramMotionEvent.getX(),
 							((int) paramMotionEvent.getY() + editTextHeight))) {
 						if (touched[i] == false) {// on
-							btn[i].setBackgroundResource(R.drawable.ic_launcher);
+							btn[i].setBackgroundResource(R.drawable.on);
 							this.vibrator.vibrate(80);
 							touched[i] = true;
 						} else {// off
-							btn[i].setBackgroundResource(R.drawable.logo02);
+							btn[i].setBackgroundResource(R.drawable.off);
 							touched[i] = false;
 						}
 					}
@@ -136,10 +142,20 @@ public class TouchView extends View {
 		return true;
 	}
 
-	public int[] setInt() {
-
-		return arr;
-	}
 	
+	//String 으로 변환
+	public String setString() {
+
+		String str = new String();
+		
+		for(int i =0; i<touched.length;i++){
+			if(touched[i]==true)
+				str=str+"1";
+			else
+				str = str+"0";
+		}
+		
+		return str;
+	}
 
 }

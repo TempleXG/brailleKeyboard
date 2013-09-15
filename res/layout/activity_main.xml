@@ -9,63 +9,75 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content" />
 
-    <LinearLayout 
+    <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/editText"
-        android:orientation="vertical">
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-    >
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:id="@+id/btn0" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:id="@+id/btn1" />
+        android:orientation="horizontal" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center_horizontal" >
+
+            <Button
+                android:id="@+id/btn0"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/off"
+                android:gravity="fill"
+                />
+
+            <Button
+                android:id="@+id/btn1"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/off"
+                android:gravity="fill_horizontal" />
+            <Button
+                android:id="@+id/btn2"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/off"
+                android:layout_gravity="center_horizontal" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:layout_weight="1"
+            android:orientation="vertical" >
+
+            
+
+            <Button
+                android:id="@+id/btn3"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/off" />
+            <Button
+                android:id="@+id/btn4"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/off" />
+
+            <Button
+                android:id="@+id/btn5"
+                android:layout_width="fill_parent"
+                android:layout_height="fill_parent"
+                android:layout_weight="1"
+                android:background="@drawable/off" />
+        </LinearLayout>
+>
     </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-    >
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:id="@+id/btn2" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:id="@+id/btn3" />
-    </LinearLayout>
-    <LinearLayout
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:orientation="horizontal"
-    >
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:id="@+id/btn4" />
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="fill_parent"
-        android:layout_weight="1"
-        android:id="@+id/btn5" />
-    </LinearLayout>
-    </LinearLayout>
+
     <com.example.braillekeyboard.TouchView
         android:id="@+id/touchViewID"
         android:layout_width="fill_parent"

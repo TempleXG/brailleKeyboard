@@ -49,7 +49,6 @@ public class MainActivity extends Activity {
 				imm=(InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
 				imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
 			
-			
 			}
 		});
 		
