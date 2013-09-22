@@ -2,9 +2,11 @@ package com.example.braillekeyboard;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.util.Log;
+import android.view.KeyEvent;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -18,7 +20,9 @@ public class MainActivity extends Activity {
 	private int viewHeight, viewWidth;
 	private Button[] btn = new Button[6];
 	private Vibrator vibrator;
-	TouchView touchView;
+	private TouchView touchView;
+	private int homeCount;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -78,4 +82,21 @@ public class MainActivity extends Activity {
 	public int getViewWidth(){
 		return this.viewWidth;
 	}
+	
+	public boolean onKeyDown(int keyCode, KeyEvent event)
+	{
+		if (keyCode == KeyEvent.KEYCODE_HOME)
+		{			
+			if(homeCount==0){
+				homeCount++;
+				
+			}else if(homeCount==1){
+				
+				
+				
+			}
+		}
+		return true;		
+	}
+	
 }

@@ -24,8 +24,7 @@ public class TouchView extends View {
 	private boolean m_isVibrator;
 	private Vibrator vibrator;
 	private String result;
-	
-	
+
 	public void setVibrator(Vibrator vib) {
 		this.vibrator = vib;
 	}
@@ -79,7 +78,7 @@ public class TouchView extends View {
 	}
 
 	public void onDraw(Canvas paramCanvas) {
-
+	
 	}
 
 	public boolean onTouchEvent(MotionEvent paramMotionEvent) {
@@ -90,9 +89,22 @@ public class TouchView extends View {
 			downPositionX = (int) paramMotionEvent.getX();
 			downPositionY = (int) paramMotionEvent.getY();
 
+
+			
 			break;
 
 		case MotionEvent.ACTION_MOVE:
+			
+			/*if ((paramMotionEvent.getX() <= this.width / 2 + 10)
+					&& (paramMotionEvent.getX() >= this.width / 2 - 10)
+					&& (paramMotionEvent.getY() <= this.height / 2 + 10+editTextHeight)
+					&& (paramMotionEvent.getY() >= this.height / 2 - 10+editTextHeight)) {
+
+				
+				this.vibrator.vibrate(1000);
+				
+				break;
+			}*/
 			break;
 
 		case MotionEvent.ACTION_UP:
@@ -100,21 +112,23 @@ public class TouchView extends View {
 			upPositionX = (int) paramMotionEvent.getX();
 			upPositionY = (int) paramMotionEvent.getY();
 
-			if ((downPositionX - upPositionX >= this.width / 2)					//왼쪽으로 움직이기 backspace
-					&& (downPositionY - downPositionY < 20 || downPositionY
-							- downPositionY > -20)) {							
-				this.vibrator.vibrate(100);
-
-				
-				
-				break;
-			} else if ((upPositionX - downPositionX >= this.width / 2)			//오른쪽으로 움직이기 입력하기
+			
+			
+			if ((downPositionX - upPositionX >= this.width / 2) // 왼쪽으로 움직이기
+																// backspace
 					&& (downPositionY - downPositionY < 20 || downPositionY
 							- downPositionY > -20)) {
 				this.vibrator.vibrate(100);
-				
-					result = setString();
-					Log.d("result",""+result);
+				break;
+			} else if ((upPositionX - downPositionX >= this.width / 2) // 오른쪽으로
+																		// 움직이기
+																		// 입력하기
+					&& (downPositionY - downPositionY < 20 || downPositionY
+							- downPositionY > -20)) {
+				this.vibrator.vibrate(100);
+
+				result = setString();
+				Log.d("result", "" + result);
 				break;
 			} else if (Math.abs(upPositionX - downPositionX) < 5
 					&& Math.abs(downPositionY - downPositionY) < 5) {// no break
@@ -142,19 +156,18 @@ public class TouchView extends View {
 		return true;
 	}
 
-	
-	//String 으로 변환
+	// String 으로 변환
 	public String setString() {
 
 		String str = new String();
-		
-		for(int i =0; i<touched.length;i++){
-			if(touched[i]==true)
-				str=str+"1";
+
+		for (int i = 0; i < touched.length; i++) {
+			if (touched[i] == true)
+				str = str + "1";
 			else
-				str = str+"0";
+				str = str + "0";
 		}
-		
+
 		return str;
 	}
 
